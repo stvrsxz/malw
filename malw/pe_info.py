@@ -114,8 +114,7 @@ class PEInfo:
         # TODO: Add Tests For Resources
         # TODO: Handle all cases + refactor.
         rv = {}
-        from pdb import set_trace
-        # set_trace()
+        # https://github.com/hiddenillusion/AnalyzePE/blob/9c76ecbc3ac417bc07439c244f2d5ed19af06578/pescanner.py#L190
         if hasattr(self.pe, 'DIRECTORY_ENTRY_RESOURCE'):
             for index, resource_entry in enumerate(self.pe.DIRECTORY_ENTRY_RESOURCE.entries):  # pylint: disable=no-member
                 rv[index] = {"name": "",
