@@ -4,9 +4,6 @@ from typer.testing import CliRunner
 import pytest
 
 from malw.malw import app  # pylint: disable=import-error
-from malw.pe_info import get_pe_info, PEInfo  # pylint: disable=import-error
-
-# Can you refactor something more in this file?
 
 
 @pytest.mark.parametrize('pe_type, expected', [

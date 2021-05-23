@@ -4,7 +4,7 @@ from typer.testing import CliRunner
 import pytest
 
 from malw.malw import app  # pylint: disable=import-error
-from malw.strings import StringType, IPv4String, SHA1HashString  # pylint: disable=import-error
+from malw.strings import StringType, IPv4String  # pylint: disable=import-error
 
 runner = CliRunner()
 

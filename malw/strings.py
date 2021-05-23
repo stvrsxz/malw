@@ -1,12 +1,11 @@
 from pathlib import Path
-import random
 import re
 import string
 from typing import Optional
 
 import typer
 
-from .utils import get_human_readable_size, accept_file_size, convert_radix, Radix
+from .utils import accept_file_size, convert_radix, Radix
 
 
 # TODO: Integrate floss https://github.com/fireeye/flare-floss when is python3 ready and maybe use floss instead of malw.strings
@@ -146,7 +145,7 @@ class String:
     def _initialize(self):
         for StringTypeSubClass in StringType.subclasses:
             if StringTypeSubClass.is_matching(self.value):
-                # if value matched a is_matching method
+                # if value matched an is_matching method
                 self.type_ = StringTypeSubClass.type_
                 self.color = StringTypeSubClass.color
                 self.hint = StringTypeSubClass.hint

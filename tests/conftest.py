@@ -4,7 +4,6 @@ from pathlib import Path
 import pytest
 
 from malw.pe_info import PEInfo  # pylint: disable=import-error
-from malw.strings import StringType  # pylint: disable=import-error
 
 FILE_DIR = os.path.join(
     os.path.dirname(os.path.realpath(__file__)),

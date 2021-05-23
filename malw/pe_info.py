@@ -46,8 +46,7 @@ class PEInfo:
             rv[id_]["virtual_address"] = hex(section.VirtualAddress)
             # TODO: More rules for suspiciousness?
             rv[id_]["suspicious"] = section.SizeOfRawData == 0 or (
-                section.get_entropy() > 0 and
-                section.get_entropy() < 1) or section.get_entropy() > 7
+                0 < section.get_entropy() < 1) or section.get_entropy() > 7
 
         return rv
 
@@ -75,7 +74,7 @@ class PEInfo:
                 rv[entry.dll] = []
                 for import_ in entry.imports:
                     import_name = import_.name if import_.name is not None else "ord(%s)" % (
-                        str(import_.ordinal))  # whats the meaning of ordinal
+                        str(import_.ordinal))
                     rv[entry.dll].append(import_name)
         return rv
 

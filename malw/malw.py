@@ -46,9 +46,9 @@ def filetypes(path: Path = typer.Argument(...,
     Get the filetype objects for files in the path.
     path can be a directory or a single file.
     """
-    filetypes = get_filetypes(path)
+    filetypes_ = get_filetypes(path)
 
-    for index, FileType in enumerate(filetypes):
+    for index, FileType in enumerate(filetypes_):
         if index:
             typer.secho(f"---", fg=typer.colors.MAGENTA)
 

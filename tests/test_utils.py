@@ -30,4 +30,4 @@ def test_convert_radix(radix, value, expected):
 
 
 def test_accept_file_size(temp_file):
-    assert utils.accept_file_size(temp_file) == True
+    assert utils.accept_file_size(temp_file) is True

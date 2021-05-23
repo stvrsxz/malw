@@ -22,7 +22,6 @@ def test_overview(pe):
     assert pytest.pe_filetype in result.stdout
     assert pytest.pe_name in result.stdout
     assert "1.1.1.1" in result.stdout
-    # assert pytest.is_not_packed_message in result.stdout
 
 
 def test_overview_invalid_is_directory(pe):
