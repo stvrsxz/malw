@@ -1,20 +1,16 @@
-TODO: refactor this in the end
+TODO: Refactor this README.md
 
-A Malware Analyzer with Python and Typer
-
-(A simplistic project with the purpose of combining some new python features, the typer cli framework and malware analysis)
+A Really Simple Static Malware Analyzer with Python and Typer
 
 ---
 
-## Installation:
+## Install:
 
-(TODO: Publish to pypi?)
-
-(TODO: Make project public) From Github with pip:
+**From Github with pip:**
 
 `pip3 install --user https://github.com/0xstvrs/malw/raw/master/dist/malw-0.1.0-py3-none-any.whl`
 
-Locally with pip:
+**Locally with pip:**
 
 `git clone https://github.com/0xstvrs/malw.git`
 
@@ -22,19 +18,7 @@ Locally with pip:
 
 `pip3 install --user dist/malw-0.1.0-py3-none-any.whl`
 
-(Optional)
-
-When installed:
-
-Install completion:
-
-`malw --install-completion`
-
-Remove installed with pip:
-
-`pip3 uninstall malw`
-
-Locally within a virtual env:
+**Locally within a virtual env:**
 
 `pip3 install poetry`
 
@@ -48,30 +32,57 @@ Locally within a virtual env:
 
 `malw`
 
-(Optional)
+Optional after installed:
+
+Install completion:
+
+`malw --install-completion`
+
+---
+
+## Uninstall:
+
+Remove with pip:
+
+`pip3 uninstall malw`
+
+---
+
+## Building and Testing Locally:
 
 `poetry build`
-and then install the generated .whl file (see step with the .whl installation)
 
-Upgrade:
-
-`pip3 install malw -U`
+**Testing:** 
 
 
-Testing: (use a make file? see floss)
-Create the pe file:
+
+Create the unpacked pe file:
+
 `sudo apt-get install mingw-w64`
 `x86_64-w64-mingw32-gcc -o tests/files/pe.exe tests/files/pe_source.c`
 
-Packed:
+Create the packed pe file:
+
 `upx -o tests/files/pe_packed.exe tests/files/pe.exe`
 
 
-Quick: (maybe remove this):
+One liner (with remove):
+
 `rm tests/files/*.exe; x86_64-w64-mingw32-gcc -o tests/files/pe.exe tests/files/pe_source.c; upx -o tests/files/pe_packed.exe tests/files/pe.exe`
 
+---
 
-Troubleshooting:
+## Troubleshooting:
 - malw uses python-magic for file type detection. If you have problems with it, first check the prerequisites for using this package https://github.com/ahupp/python-magic#installation
-- if the ssdeep is failing, try to install: `sudo apt install libffi-dev libfuzzy-dev libfuzzy2`
-- TODO: Python version?
+
+- if the ssdeep is failing, try:
+
+     `sudo apt install libffi-dev libfuzzy-dev libfuzzy2`
+
+- python3.9 is requirent. 
+
+    `apt install python3.9 python3.9-dev`
+
+    If pip fails try:
+    
+    `python3.9 -m pip install --user https://github.com/0xstvrs/malw/raw/master/dist/malw-0.1.0-py3-none-any.whl`

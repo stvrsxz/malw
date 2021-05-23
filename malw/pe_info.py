@@ -81,7 +81,7 @@ class PEInfo:
     def print_imports(self):
         typer.echo("\nImports:\n")
         for lib in self.imports:
-            typer.secho(f"{lib.decode('utf8')}", fg=typer.colors.BRIGHT_CYAN)
+            typer.secho(f"{lib.decode('utf8')}:", fg=typer.colors.BRIGHT_GREEN)
             for import_ in self.imports[lib]:
                 typer.secho(f"\t{import_.decode('utf8')}",
                             fg=typer.colors.CYAN)
@@ -157,7 +157,8 @@ class PEInfo:
         if not self.resources:
             typer.echo(f"No resources")
         else:
-            typer.echo(f"{tabulate(list_for_tabulate)}")
+            # TODO: Add maxcolwidths=[None, 20, None, None] or something on tabulate call when the tabulate is upgraded on pypi.
+            typer.echo(f"{tabulate(list_for_tabulate, tablefmt='grid')}")
 
     @ property
     def subsystem(self):
