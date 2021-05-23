@@ -34,6 +34,27 @@ class StringType:
         return re.match(r"%s" % cls.regex, value)
 
 
+class InterestingString(StringType):
+    """
+    Just anything interesting that comes to mind or found after analyzing samples, that can't be matched with the other regexes
+        for now or simply doesn't belong to other string types-regexes.
+
+    TODO: Try to edit the other regexes to match these strings when appropriate.
+    """
+
+    interesting_strings = [".exe", "c://", ".dll", "exec", "sleep"]
+
+    @classmethod
+    def is_matching(cls, value: str):
+        for interesting in cls.interesting_strings:
+            if interesting in value:
+                return True
+
+    type_ = "interesing"
+    hint = "Interesting?"
+    example = "exec"
+
+
 class IPv4String(StringType):
     # https://stackoverflow.com/a/36760050
     regex = "^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\.(?!$)|$)){4}$"

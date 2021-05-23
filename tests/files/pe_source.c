@@ -23,7 +23,7 @@ int main(void){
     wprintf(L"test@testutf16.com\n");  // UTF-16 example
     printf("asdasdsadas\n");
     printf("dGVzdAo=\n"); // Base64
-    printf("\n");
+    printf("exec\n"); // Interesting
 
     return 0;
 }

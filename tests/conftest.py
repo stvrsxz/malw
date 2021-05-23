@@ -56,17 +56,20 @@ def pytest_configure():
 
     # For pe fixture:
     pytest.pe_name = "pe.exe"
-    # Need to change every time.. TODO: See if you find a better solution
+    # Possible need to change when creating pe.exe:
     pytest.ip_offset_on_file = "0x9c00"
     pytest.offset = "39900"
     pytest.max_bytes = "250"
     pytest.unicode_example = "test@testutf16.com"
     pytest.pe_filetype = "PE32+ executable (console) x86-64, for MS Windows"
-    pytest.is_not_packed_message = "Is Not Packed"
-    # Need to change every time.. TODO: See if you find a better solution
-    pytest.fuzzy_hash = "3072:QWZi4ktjFcRPItMsEivXv04QyJ7Uwfd4ZmM0mrcqSp5gnEtMNH/I4MiJ:/Zhc1hv0DmhLAMiJ"
+
+    # Need to change when creating pe.exe:
+    pytest.fuzzy_hash = "3072:qWZi4kt2TFcRPItMsEivXv04QyJ7Uwfd4ZmM0mrcqSp5gnEtMNZ/I4MiJ:lZhNT1hv0DmhLKMiJ"
+    # Need to change when creating pe.exe:
     pytest.imphash = "62c852ae981c077c1abe7a85b686f6f5"
-    pytest.compilation_date = "2021-05-08 12:40:23"
+    # Need to change when creating pe.exe:
+    pytest.compilation_date = "2021-05-23 15:02:40"
+
     pytest.subsystem = "IMAGE_SUBSYSTEM_WINDOWS_CUI"
     pytest.dll = b"KERNEL32.dll"
     pytest.import_ = b"DeleteCriticalSection"
@@ -78,11 +81,14 @@ def pytest_configure():
 
     # For pe_packed fixture:
     pytest.pe_packed_name = "pe_packed.exe"
-    pytest.is_packed_message = "Is Packed"
-    # Need to change every time.. TODO: See if you find a better solution
-    pytest.fuzzy_hash_packed = "3072:CIinFDz/vCLfB7c4RKFVqYVeD0LGUz/I4MiJ:7cFfnCTB7rssYrLGUhMiJ"
+
+    # Need to change when creating pe_packed.exe:
+    pytest.fuzzy_hash_packed = "3072:hNinJutyrXYb+AgTzrX6UNmgaqqGLpHDrD/I4MiJ:bcJuUoqrX6UbaQZ5MiJ"
+    # Need to change when creating pe_packed.exe:
     pytest.imphash_packed = "9aebf3da4677af9275c461261e5abde3"
-    pytest.compilation_date_packed = "2021-05-08 12:40:23"
+    # Need to change when creating pe_packed.exe:
+    pytest.compilation_date_packed = "2021-05-23 15:02:40"
+
     pytest.dll_packed = b"KERNEL32.DLL"  # Why this is upped DLL?
     pytest.import_packed = b"LoadLibraryA"
     pytest.built_with_packed = ""  # fix to show upx?
