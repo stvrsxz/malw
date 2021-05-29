@@ -7,7 +7,7 @@ from .filetypes import get_filetypes
 from .hashes import HashFunction, get_checksum_groups
 from .strings import get_strings, Radix
 from .pe_info import get_pe_info
-from .utils import get_human_readable_size
+from .utils import get_human_readable_size, get_filepaths
 
 __version__ = "0.1.0"
 
@@ -105,36 +105,39 @@ def pe(path: Path = typer.Argument(...,
 def overview(path: Path = typer.Argument(...,
                                          exists=True,
                                          file_okay=True,
-                                         dir_okay=False)):
+                                         dir_okay=True)):
     """
     Get an overview running most of the commands with default values.
-    path can be a single file.
+    path can be a single file or directory
     """
+    for index, filepath in enumerate(get_filepaths(path)):
+        if index:
+            typer.secho(f"---\n", fg=typer.colors.MAGENTA)
 
-    typer.secho(
-        f"{path.name} - {get_human_readable_size(path.stat().st_size)}", fg=typer.colors.RED)
+        typer.secho(
+            f"{filepath.name} - {get_human_readable_size(filepath.stat().st_size)}", fg=typer.colors.RED)
 
-    typer.secho(f"\nChecksums:", fg=typer.colors.MAGENTA)
+        typer.secho(f"\nChecksums:", fg=typer.colors.MAGENTA)
 
-    for checksum in get_checksum_groups(HashFunction.ALL, path)[0]:
-        checksum.print_info_for_checksum(show_filename=False)
+        for checksum in get_checksum_groups(HashFunction.ALL, filepath)[0]:
+            checksum.print_info_for_checksum(show_filename=False)
 
-    typer.secho(f"\nFiletype:", fg=typer.colors.MAGENTA)
+        typer.secho(f"\nFiletype:", fg=typer.colors.MAGENTA)
 
-    for FileType in get_filetypes(path):
-        FileType.print_info_for_filetype(show_filename=False)
+        for FileType in get_filetypes(filepath):
+            FileType.print_info_for_filetype(show_filename=False)
 
-    typer.secho(f"\nInteresting Strings?",
-                fg=typer.colors.MAGENTA)
+        typer.secho(f"\nInteresting Strings?",
+                    fg=typer.colors.MAGENTA)
 
-    for string in get_strings(path):
-        string.print_info_for_string(
-            only_interesting=True, show_offset_in_file=True)
+        for string in get_strings(filepath):
+            string.print_info_for_string(
+                only_interesting=True, show_offset_in_file=True)
 
-    typer.secho(f"\nPE information:", fg=typer.colors.MAGENTA)
+        typer.secho(f"\nPE information:", fg=typer.colors.MAGENTA)
 
-    for pe_info in get_pe_info(path):
-        pe_info.print_pe_info(show_filename=False)
+        for pe_info in get_pe_info(filepath):
+            pe_info.print_pe_info(show_filename=False)
 
 
 def version_callback(value: bool):
