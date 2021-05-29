@@ -1,17 +1,19 @@
 A Really Simple Static Malware Analyzer with Python and Typer
 
 
-## Usage:
+## Usage
 [Click Here For Bigger Gif](https://raw.githubusercontent.com/0xstvrs/malw/master/malw.gif)
 
 ![](malw.gif) 
 
-## Documentation:
+## Documentation
 
 [Docs Here](DOCS.md)
 ---
 
-## Installation:
+## Installation
+
+First have a look in this section for requirements: [Troubleshooting](#troubleshooting)
 
 **From Github with pip:**
 
@@ -47,7 +49,7 @@ Install completion:
 
 ---
 
-## Uninstall:
+## Uninstall
 
 Remove with pip:
 
@@ -55,7 +57,7 @@ Remove with pip:
 
 ---
 
-## Building and Testing Locally:
+## Building and Testing Locally
 
 `poetry build`
 
@@ -79,30 +81,30 @@ One liner (with remove):
 
 ---
 
-## Generating Docs:
+## Generating Docs
 
 `typer malw.malw utils docs --output=DOCS.md --name=malw`
 
 
 ---
 
-## Troubleshooting:
+## Troubleshooting
 - malw uses python-magic for file type detection. If you have problems with it, first check the prerequisites for using this package https://github.com/ahupp/python-magic#installation
 
 - if the ssdeep is failing, try:
 
      `sudo apt install libffi-dev libfuzzy-dev libfuzzy2`
 
-- python3.9 is requirent. 
+- python3.9 is a requirement. 
 
     `apt install python3.9 python3.9-dev`
 
-    If pip fails try:
+    If pip fails with python versions try:
     
     `python3.9 -m pip install --user https://github.com/0xstvrs/malw/raw/master/dist/malw-0.1.0-py3-none-any.whl`
 
 
-## Recording:
+## Recording
 `asciinema rec malw.cast -i 2`
 
 `sudo docker run --rm -v $PWD:/data asciinema/asciicast2gif malw.cast malw.gif`  (Docker asciicast2gif)
