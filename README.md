@@ -4,7 +4,7 @@ TODO: Refactor this README + DOCS
 
 ## Usage:
 
-![](malw.gif)
+![](malw.gif) 
 
 ## Documentation:
 
