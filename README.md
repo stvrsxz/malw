@@ -1,5 +1,11 @@
 A Really Simple Static Malware Analyzer with Python and Typer
 
+TODO: Refactor this README + DOCS
+
+## Usage:
+
+![](malw.gif)
+
 ## Documentation:
 
 [Docs Here](DOCS.md)
@@ -94,3 +100,9 @@ One liner (with remove):
     If pip fails try:
     
     `python3.9 -m pip install --user https://github.com/0xstvrs/malw/raw/master/dist/malw-0.1.0-py3-none-any.whl`
+
+
+## Recording:
+`asciinema rec malw.cast -i 2`
+
+`sudo docker run --rm -v $PWD:/data asciinema/asciicast2gif malw.cast malw.gif`  (Docker asciicast2gif)
