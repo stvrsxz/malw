@@ -1,10 +1,11 @@
-TODO: Refactor this README.md
-
 A Really Simple Static Malware Analyzer with Python and Typer
 
+## Documentation:
+
+[Docs Here](DOCS.md)
 ---
 
-## Install:
+## Installation:
 
 **From Github with pip:**
 
@@ -69,6 +70,13 @@ Create the packed pe file:
 One liner (with remove):
 
 `rm tests/files/*.exe; x86_64-w64-mingw32-gcc -o tests/files/pe.exe tests/files/pe_source.c; upx -o tests/files/pe_packed.exe tests/files/pe.exe`
+
+---
+
+## Generating Docs:
+
+`typer malw.malw utils docs --output=DOCS.md --name=malw`
+
 
 ---
 
