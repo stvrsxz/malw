@@ -2,6 +2,7 @@ A Really Simple Static Malware Analyzer with Python and Typer
 
 
 ## Usage:
+[Click Here For Bigger Gif](https://raw.githubusercontent.com/0xstvrs/malw/master/malw.gif)
 
 ![](malw.gif) 
 
