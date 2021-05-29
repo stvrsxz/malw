@@ -1,6 +1,5 @@
 A Really Simple Static Malware Analyzer with Python and Typer
 
-TODO: Refactor this README + DOCS
 
 ## Usage:
 
