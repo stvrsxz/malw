@@ -13,7 +13,7 @@ def test_version():
     assert __version__ in result.stdout
 
 
-# Just some randomly selected things from the big output for
+# Just some randomly selected things from the big overview output for
 # ensuring that probably the overview is working correctly
 def test_overview_file(pe):
     result = runner.invoke(app, ["overview", str(pe)])
@@ -35,7 +35,8 @@ def test_overview_file(pe):
     assert ".text" in result.stdout
 
 
-# Just some random things from the big output to ensure that probably the overview is working correctly
+# Just some randomly selected things from the big overview output for
+# ensuring that probably the overview is working correctly
 def test_overview_directory(pe):
     result = runner.invoke(app, ["overview", str(pe.parent)])
     assert result.exit_code == 0

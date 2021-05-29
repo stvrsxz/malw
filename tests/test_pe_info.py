@@ -59,7 +59,6 @@ def test_built_with(pe_type, expected, request):
     ('pe_info_obj', pytest.sections_values),
     ('pe_info_obj_packed', pytest.sections_packed_values)])
 def test_section(pe_type, expected, request):
-    # better tests?
     pe_info = request.getfixturevalue(pe_type)
     for k, v in pe_info.sections.items():
         for section_key in pytest.section_keys:

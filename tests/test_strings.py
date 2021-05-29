@@ -24,20 +24,18 @@ def test_command_strings_file(pe):
     assert pytest.unicode_example in result.stdout
 
 
-# TODO: consider to make better tests for pe options without having to change to many conftest.py constants
 def test_command_strings_options(pe):
     # Just see if it works
     result = runner.invoke(
-        app, ["strings", str(pe), "--radix=x", f"--max-bytes={pytest.max_bytes}", f"--offset={pytest.offset}"])
+        app, ["strings", str(pe), "--min-chars=3", "--radix=x", f"--max-bytes={pytest.max_bytes}", f"--offset={pytest.offset}"])
     assert result.exit_code == 0
 
 
-# TODO: consider to make better tests for pe options without having to change to many conftest.py constants
 def test_command_strings_options_with_the_whole_file(pe):
     # Similar to the test without options but
-    # just see if it works with options and without changing to many pytest constants
+    # just see if it is working with options and without a need to change many pytest constants
     result = runner.invoke(
-        app, ["strings", str(pe), "--radix=x", f"--max-bytes=9999999999", f"--offset=0"])
+        app, ["strings", str(pe), "--min-chars=4", "--radix=x", f"--max-bytes=9999999999", f"--offset=0"])
 
     assert result.exit_code == 0
     assert pytest.ip_offset_on_file in result.stdout

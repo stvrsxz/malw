@@ -88,16 +88,16 @@ class EthereumTokenString(StringType):
 
 
 class FileString(StringType):
-    # Make it better
+    # TODO: MAke it better?
     regex = "^\S+\.(dll|exe|pdf|doc|docx|html|htm|zip|rar|xls|odt|msi|bat|ps1|ppt)$"
     type_ = "file"
     hint = "File?"
     example = "malmalmalw.dll"
 
 
-class RegistryString(StringType):  # What about HKCR?
+class RegistryString(StringType):
     # https://stackoverflow.com/a/54569327
-    regex = "^HKEY_\S+$"  # TODO: MAke it better?
+    regex = "^HKEY_\S+$"  # TODO: MAke it better? # What about HKCR?
     type_ = "registry"
     hint = "Registry Key?"
     example = "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasAuto\Parameters\ServiceDLL"
@@ -190,8 +190,8 @@ class String:
 
 
 def get_strings(path: Path, min_chars: int = 4, max_bytes: Optional[int] = None, offset: Optional[int] = None, radix: Radix = Radix.X):
-
-    find_strings = accept_file_size(path)
+    find_strings = accept_file_size(path,
+                                    prompt_message_part="Are you sure you want to run strings? (You can use max_bytes and/or offset instead)")
 
     if find_strings:
         with path.open(mode="rb") as f:

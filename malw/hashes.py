@@ -68,7 +68,7 @@ def get_checksum_groups(hash_function: str, path: Path):
     Return a list of lists of checksum objects for every file in the path.
     If hash_function == 'all' then return all the results for all the registered
     checksum subclasses.
-    Otherwise return only the checksum for the specific function provided by the user. e.g. md5
+    Otherwise, return only the checksum for the specific function provided by the user. e.g. md5
     """
     checksum_groups = []
 

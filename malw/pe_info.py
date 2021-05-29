@@ -35,17 +35,16 @@ class PEInfo:
     @property
     def sections(self):
         rv = {}
-        for section in self.pe.sections:
-            id_ = hash(section)
-            rv[id_] = {}
-            rv[id_]["name"] = section.Name.decode("utf8").rstrip("\x00")
-            rv[id_]["raw_size"] = section.SizeOfRawData
-            rv[id_]["virtual_size"] = section.Misc_VirtualSize
-            rv[id_]["entropy"] = round(section.get_entropy(), 2)
-            rv[id_]["md5"] = section.get_hash_md5()
-            rv[id_]["virtual_address"] = hex(section.VirtualAddress)
+        for index, section in enumerate(self.pe.sections):
+            rv[index] = {}
+            rv[index]["name"] = section.Name.decode("utf8").rstrip("\x00")
+            rv[index]["raw_size"] = section.SizeOfRawData
+            rv[index]["virtual_size"] = section.Misc_VirtualSize
+            rv[index]["entropy"] = round(section.get_entropy(), 2)
+            rv[index]["md5"] = section.get_hash_md5()
+            rv[index]["virtual_address"] = hex(section.VirtualAddress)
             # TODO: More rules for suspiciousness?
-            rv[id_]["suspicious"] = section.SizeOfRawData == 0 or (
+            rv[index]["suspicious"] = section.SizeOfRawData == 0 or (
                 0 < section.get_entropy() < 1) or section.get_entropy() > 7
 
         return rv
@@ -66,7 +65,7 @@ class PEInfo:
         typer.secho("\nSections:")
         typer.echo(f"{tabulate(list_for_tabulate)}")
 
-    @ property
+    @property
     def imports(self):
         rv = {}
         if hasattr(self.pe, 'DIRECTORY_ENTRY_IMPORT'):
@@ -86,7 +85,7 @@ class PEInfo:
                 typer.secho(f"\t{import_.decode('utf8')}",
                             fg=typer.colors.CYAN)
 
-    @ property
+    @property
     def exports(self):  # TODO: testing for exports
         if hasattr(self.pe, 'DIRECTORY_ENTRY_EXPORT'):
             return [export.name for export in self.pe.DIRECTORY_ENTRY_EXPORT.symbols]  # pylint: disable=no-member
@@ -97,18 +96,18 @@ class PEInfo:
         typer.echo(
             f"\nExports:\n {typer.style(exports_string, fg=typer.colors.CYAN)}")
 
-    @ property
+    @property
     def built_with(self):
         signatures = peutils.SignatureDatabase(USER_DB_TXT)
         matched = signatures.match(self.pe)
         return matched[0] if matched else ""
 
-    @ property
+    @property
     def compilation_date(self):
         return datetime.utcfromtimestamp(
             self.pe.FILE_HEADER.TimeDateStamp).strftime('%Y-%m-%d %H:%M:%S')  # pylint: disable=no-member
 
-    @ property
+    @property
     def resources(self):
         # TODO: Add Tests For Resources
         # TODO: Handle all cases + refactor.
@@ -160,7 +159,7 @@ class PEInfo:
             # TODO: Add maxcolwidths=[None, 20, None, None] or something on tabulate call when the tabulate is upgraded on pypi.
             typer.echo(f"{tabulate(list_for_tabulate, tablefmt='grid')}")
 
-    @ property
+    @property
     def subsystem(self):
         return pefile.SUBSYSTEM_TYPE[self.pe.OPTIONAL_HEADER.Subsystem]
 

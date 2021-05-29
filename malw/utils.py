@@ -46,10 +46,10 @@ def convert_radix(radix: Radix, value: int):
         return hex(value)
 
 
-def accept_file_size(path: Path, bytes_to_prompt: int = 104857600):  # 100 MiB
-    find_strings = True
+def accept_file_size(path: Path, prompt_message_part: str = "", bytes_to_prompt: int = 104857600):  # 100 MiB
+    accept = True
     if path.stat().st_size > bytes_to_prompt:
-        find_strings = typer.confirm(
-            f"File is bigger than {get_human_readable_size(bytes_to_prompt)}. Are you sure you want to run strings? (You can use max_bytes and/or offset instead)")
+        accept = typer.confirm(
+            f"File is bigger than {get_human_readable_size(bytes_to_prompt)}. {prompt_message_part}")
 
-    return find_strings
+    return accept

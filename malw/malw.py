@@ -23,7 +23,7 @@ def hashes(path: Path = typer.Argument(...,
     """
     Get the checksums for files in the path.
     path can be a directory or a single file.
-    hash-function can be 'md5', 'sha1', 'sha256' or 'all' to get all checksums
+    hash-function can be 'md5', 'sha1', 'sha256' or 'all' (default) to get all checksums
     for the provided hash functions
     """
     # The group here refers to a group of checksums for a file
@@ -43,7 +43,7 @@ def filetypes(path: Path = typer.Argument(...,
                                           file_okay=True,
                                           dir_okay=True)):
     """
-    Get the filetype objects for files in the path.
+    Get the filetype for files in the path.
     path can be a directory or a single file.
     """
     filetypes_ = get_filetypes(path)
@@ -67,19 +67,19 @@ def strings(path: Path = typer.Argument(...,
             radix: Optional[Radix] = None):
     """
     Get the strings objects for files in the path.
-    path can be a single file.
+    path can be a single file (Simply for not having extremely long output)
 
-    Tries to emulate some of the common "strings" functionality.
+    Tries to emulate some common "strings" functionalities.
 
     min_chars: Min string length in characters. (ASCII or Unicode)
     max_bytes: Max bytes of file to scan
     offset: File offset at which to start scanning.
     radix: The offset the string appears in the file. x for hex (default), o for octal, d for decimal. If no 
-    radix is given then it will not shown in the output
+    radix is given then it will not be shown in the output
     """
-    strings = get_strings(path, min_chars, max_bytes, offset, radix)
+    strings_ = get_strings(path, min_chars, max_bytes, offset, radix)
 
-    for string in strings:
+    for string in strings_:
         string.print_info_for_string(
             show_offset_in_file=True if radix else False)
 
@@ -107,7 +107,8 @@ def overview(path: Path = typer.Argument(...,
                                          file_okay=True,
                                          dir_okay=True)):
     """
-    Get an overview running most of the commands with default values.
+    Get an overview of information for the provided path files through
+    running most of the malw commands with default values.
     path can be a single file or directory
     """
     for index, filepath in enumerate(get_filepaths(path)):

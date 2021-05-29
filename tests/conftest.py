@@ -39,9 +39,7 @@ def pe_info_obj_packed(pe_packed):
     return PEInfo(pe_packed)
 
 
-# TODO: See if you can calculate some of these dynamically, or if you make the malw you wont need to change them so often
-# Or create more non changing files. lets say files for pe files for strings. change only one.
-# review all and make more dynamic when possible
+# TODO: Refactor this. And make it more dynamic when possible
 def pytest_configure():
     # These values are subject to frequent changes
 
@@ -56,10 +54,12 @@ def pytest_configure():
 
     # For pe fixture:
     pytest.pe_name = "pe.exe"
+
     # Possible need to change when creating pe.exe:
     pytest.ip_offset_on_file = "0x9c00"
     pytest.offset = "39900"
     pytest.max_bytes = "250"
+
     pytest.unicode_example = "test@testutf16.com"
     pytest.pe_filetype = "PE32+ executable (console) x86-64, for MS Windows"
 
