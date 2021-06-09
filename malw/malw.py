@@ -1,15 +1,16 @@
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List
 
 import typer
 
+from .compare import compare_paths
 from .filetypes import get_filetypes
 from .hashes import HashFunction, get_checksum_groups
 from .strings import get_strings, Radix
 from .pe_info import get_pe_info
 from .utils import get_human_readable_size, get_filepaths
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 app = typer.Typer()
 
@@ -99,6 +100,20 @@ def pe(path: Path = typer.Argument(...,
             typer.secho(f"---", fg=typer.colors.MAGENTA)
 
         pe_info.print_pe_info()
+
+
+@app.command()
+def compare(paths: List[Path] = typer.Argument(...,
+                                               exists=True,
+                                               file_okay=True,
+                                               dir_okay=True)):
+    """
+    Trying to get some info about the similarity of the provided samples.
+    The comparison functionality includes fuzzy hash, imphash and sections md5 hash comparisons.
+    paths can be a file, a list of files or a directory.
+    """
+
+    compare_paths(paths)
 
 
 @app.command()

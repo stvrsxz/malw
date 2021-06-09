@@ -17,7 +17,7 @@ First have a look in this section for requirements: [Troubleshooting](#troublesh
 
 **From Github with pip:**
 
-`pip3 install --user https://github.com/0xstvrs/malw/raw/master/dist/malw-0.1.0-py3-none-any.whl`
+`pip3 install --user https://github.com/0xstvrs/malw/raw/master/dist/malw-0.1.1-py3-none-any.whl`
 
 **Locally with pip:**
 
@@ -25,7 +25,7 @@ First have a look in this section for requirements: [Troubleshooting](#troublesh
 
 `cd malw`
 
-`pip3 install --user dist/malw-0.1.0-py3-none-any.whl`
+`pip3 install --user dist/malw-0.1.1-py3-none-any.whl`
 
 **Locally within a virtual env:**
 
@@ -101,7 +101,7 @@ One liner (with remove):
 
     If pip fails with python versions try:
     
-    `python3.9 -m pip install --user https://github.com/0xstvrs/malw/raw/master/dist/malw-0.1.0-py3-none-any.whl`
+    `python3.9 -m pip install --user https://github.com/0xstvrs/malw/raw/master/dist/malw-0.1.1-py3-none-any.whl`
 
 
 ## Recording

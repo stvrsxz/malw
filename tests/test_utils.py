@@ -31,3 +31,15 @@ def test_convert_radix(radix, value, expected):
 
 def test_accept_file_size(temp_file):
     assert utils.accept_file_size(temp_file) is True
+
+
+def test_unpack_paths(temp_file):
+    assert utils.get_filepaths(temp_file.parent) == [temp_file]
+
+
+def test_get_fuzzy_hash(pe):
+    assert utils.get_fuzzy_hash(pe) == pytest.fuzzy_hash
+
+
+def test_get_path_from_parent(pe):
+    assert utils.get_path_from_parent(pe) == "files/pe.exe"

@@ -17,11 +17,32 @@ $ malw [OPTIONS] COMMAND [ARGS]...
 
 **Commands**:
 
+* `compare`: Trying to get some info about the similarity...
 * `filetypes`: Get the filetype for files in the path.
 * `hashes`: Get the checksums for files in the path.
 * `overview`: Get an overview of information for the...
 * `pe`: Get the Portable Executable info for files in...
 * `strings`: Get the strings objects for files in the...
+
+## `malw compare`
+
+Trying to get some info about the similarity of the provided samples.
+The comparison functionality includes fuzzy hash, imphash and sections md5 hash comparisons.
+paths can be a file, a list of files or a directory.
+
+**Usage**:
+
+```console
+$ malw compare [OPTIONS] PATHS...
+```
+
+**Arguments**:
+
+* `PATHS...`: [required]
+
+**Options**:
+
+* `--help`: Show this message and exit.
 
 ## `malw filetypes`
 

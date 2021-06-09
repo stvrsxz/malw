@@ -6,11 +6,10 @@ from pathlib import Path
 import magic
 import pefile
 import peutils
-import ssdeep
 from tabulate import tabulate
 import typer
 
-from .utils import get_filepaths
+from .utils import get_filepaths, get_fuzzy_hash
 
 
 USER_DB_TXT = os.path.join(
@@ -26,7 +25,7 @@ class PEInfo:
 
     @property
     def fuzzy_hash(self):
-        return ssdeep.hash_from_file(str(self.path))
+        return get_fuzzy_hash(self.path)
 
     @property
     def imphash(self):
