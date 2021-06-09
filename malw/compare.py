@@ -2,18 +2,12 @@ from itertools import combinations
 from pathlib import Path
 from typing import List, Set
 
-# gif
-# test file, *, * with exe, multiple files, directory. test also what will happen with dir and file. and file and *.exe
-# test also different files in different directories
-# refactor print_section_results
-# again mia matia refactor everything
-
 import pefile
 import ssdeep
 import typer
 
 from malw.pe_info import PEInfo
-from malw.utils import unpack_paths, get_fuzzy_hash, get_path_from_parent as pp
+from malw.utils import unpack_paths, get_fuzzy_hash
 
 
 def fuzzy_compare(filepaths: Set[Path]):
