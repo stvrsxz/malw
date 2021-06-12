@@ -37,12 +37,12 @@ def test_compare_sections(compare_filepaths):
     assert set.union(*compare_sections(compare_filepaths)[pytest.sections_values["name"]].values()) == compare_filepaths
 
 
-# #  =================== Compare: Integration tests =====================
+#  =================== Compare: Integration tests =====================
 
 runner = CliRunner()
 
 
-# Not the best test but good enough for seeing if at least running ok
+# Not the best test but good enough for seeing if at least it runs ok
 def test_command_compare_all(pe, pe_similar):
     result = runner.invoke(app, ["compare", str(pe), str(pe_similar)])
     assert result.exit_code == 0

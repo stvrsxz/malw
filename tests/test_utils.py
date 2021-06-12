@@ -34,7 +34,7 @@ def test_accept_file_size(temp_file):
 
 
 def test_unpack_paths(temp_file):
-    assert utils.get_filepaths(temp_file.parent) == [temp_file]
+    assert utils.unpack_paths([temp_file.parent, temp_file.parent, temp_file]) == {temp_file}
 
 
 def test_get_fuzzy_hash(pe):

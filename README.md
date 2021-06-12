@@ -80,7 +80,6 @@ Create the packed pe file:
 
 Create the similar pe file:
 
-`sudo apt-get install mingw-w64`
 `x86_64-w64-mingw32-gcc -o tests/files/pe_similar.exe tests/files/pe_source_similar.c`
 
 One liner (with remove):
