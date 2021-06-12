@@ -7,6 +7,7 @@ A CLI app for a very Basic and Static Malware Analysis with Python and Typer
 Main Usage:
 ![](malw.gif)
 
+[Click Here For a Bigger Gif](https://raw.githubusercontent.com/0xstvrs/malw/master/malw_compare.gif)
 Compare files:
 ![](malw_compare.gif)
 
