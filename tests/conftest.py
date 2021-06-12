@@ -12,6 +12,11 @@ FILE_DIR = os.path.join(
 
 
 @pytest.fixture(scope="session")
+def file_dir():
+    return FILE_DIR
+
+
+@pytest.fixture(scope="session")
 def temp_file(tmp_path_factory):
     # An ultra simple temp file
     file_ = tmp_path_factory.mktemp("data") / pytest.temp_file_name
@@ -30,6 +35,11 @@ def pe_packed():
 
 
 @pytest.fixture(scope="session")
+def pe_similar():
+    return Path(FILE_DIR + "/pe_similar.exe")
+
+
+@pytest.fixture(scope="session")
 def pe_info_obj(pe):
     return PEInfo(pe)
 
@@ -37,6 +47,17 @@ def pe_info_obj(pe):
 @pytest.fixture(scope="session")
 def pe_info_obj_packed(pe_packed):
     return PEInfo(pe_packed)
+
+
+@pytest.fixture(scope="session")
+def pe_info_obj_similar():
+    return Path(FILE_DIR + "/pe_similar.exe")
+
+
+@pytest.fixture(scope="session")
+def compare_filepaths(pe, pe_similar):
+    return {pe, pe_similar}
+
 
 
 # TODO: Refactor this. And make it more dynamic when possible
@@ -94,3 +115,6 @@ def pytest_configure():
     pytest.built_with_packed = ""  # fix to show upx?
     # more tests?
     pytest.sections_packed_values = {"name": "UPX1", "suspicious": True}
+
+    # compare constants
+    pytest.similarity = 54  # Need to change when changing pe.exe or pe_similar.exe

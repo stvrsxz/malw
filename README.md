@@ -1,10 +1,14 @@
-A Really Simple Static Malware Analyzer with Python and Typer
+A CLI app for a very Basic and Static Malware Analysis with Python and Typer
 
 
 ## Usage
 [Click Here For a Bigger Gif](https://raw.githubusercontent.com/0xstvrs/malw/master/malw.gif)
 
-![](malw.gif) 
+Main Usage:
+![](malw.gif)
+
+Compare files:
+![](malw_compare.gif)
 
 ## Documentation
 
@@ -74,6 +78,10 @@ Create the packed pe file:
 
 `upx -o tests/files/pe_packed.exe tests/files/pe.exe`
 
+Create the similar pe file:
+
+`sudo apt-get install mingw-w64`
+`x86_64-w64-mingw32-gcc -o tests/files/pe_similar.exe tests/files/pe_source_similar.c`
 
 One liner (with remove):
 

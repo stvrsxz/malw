@@ -87,27 +87,25 @@ def compare_sections(filepaths: Set[Path]):
     return rv
 
 
-def print_section_results(section_results):
-    interesting_sections = []
+def print_section_results(section_results: dict):
+    interesting_sections = {}
     for section_name, md5_to_filepaths in section_results.items():
         for md5, filepaths in md5_to_filepaths.items():
             if len(filepaths) > 1:
-                interesting_sections.append({"name": section_name,
-                                             "md5": md5,
-                                             "filepaths": filepaths})
-    # refactor again to print only one section name and the rest as it is now?
+                interesting_sections.setdefault(section_name, {}).setdefault(md5, set()).update(filepaths)
+
     if interesting_sections:
         typer.secho("Sections with the same md5 hashes:", fg=typer.colors.RED)
-        for section in interesting_sections:
-            name = typer.style(section['name'], fg=typer.colors.CYAN)
+        for section_name, md5_to_filepaths in interesting_sections.items():
+            name = typer.style(section_name, fg=typer.colors.CYAN)
             typer.echo(f"section: {name}")
+            for md5, filepaths in md5_to_filepaths.items():
+                md5 = typer.style(md5, fg=typer.colors.BLUE)
+                typer.echo(f"\tmd5: {md5}")
 
-            md5 = typer.style(section['md5'], fg=typer.colors.BLUE)
-            typer.echo(f"\tmd5: {md5}")
-
-            for filepath in section['filepaths']:
-                filepath = typer.style(filepath.name, fg=typer.colors.MAGENTA)
-                typer.echo(f"\t\tfile: {filepath}")
+                for filepath in filepaths:
+                    filepath = typer.style(filepath.name, fg=typer.colors.MAGENTA)
+                    typer.echo(f"\t\tfile: {filepath}")
     else:
         typer.secho("No duplicate section md5 hashes", fg=typer.colors.RED)
 
