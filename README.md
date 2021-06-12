@@ -1,10 +1,14 @@
-A Really Simple Static Malware Analyzer with Python and Typer
+A CLI app for a very Basic and Static Malware Analysis with Python and Typer
 
 
 ## Usage
 [Click Here For a Bigger Gif](https://raw.githubusercontent.com/0xstvrs/malw/master/malw.gif)
 
-![](malw.gif) 
+Main Usage:
+![](malw.gif)
+
+Compare files:
+![](malw_compare.gif)
 
 ## Documentation
 
@@ -17,7 +21,7 @@ First have a look in this section for requirements: [Troubleshooting](#troublesh
 
 **From Github with pip:**
 
-`pip3 install --user https://github.com/0xstvrs/malw/raw/master/dist/malw-0.1.0-py3-none-any.whl`
+`pip3 install --user https://github.com/0xstvrs/malw/raw/master/dist/malw-0.1.1-py3-none-any.whl`
 
 **Locally with pip:**
 
@@ -25,7 +29,7 @@ First have a look in this section for requirements: [Troubleshooting](#troublesh
 
 `cd malw`
 
-`pip3 install --user dist/malw-0.1.0-py3-none-any.whl`
+`pip3 install --user dist/malw-0.1.1-py3-none-any.whl`
 
 **Locally within a virtual env:**
 
@@ -74,6 +78,9 @@ Create the packed pe file:
 
 `upx -o tests/files/pe_packed.exe tests/files/pe.exe`
 
+Create the similar pe file:
+
+`x86_64-w64-mingw32-gcc -o tests/files/pe_similar.exe tests/files/pe_source_similar.c`
 
 One liner (with remove):
 
@@ -101,7 +108,7 @@ One liner (with remove):
 
     If pip fails with python versions try:
     
-    `python3.9 -m pip install --user https://github.com/0xstvrs/malw/raw/master/dist/malw-0.1.0-py3-none-any.whl`
+    `python3.9 -m pip install --user https://github.com/0xstvrs/malw/raw/master/dist/malw-0.1.1-py3-none-any.whl`
 
 
 ## Recording

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "malw"
-version = "0.1.0"
+version = "0.1.1"
 description = "A Simple Malware Analyzer with Python"
 authors = ["0xstvrs"]
 readme = "README.md"

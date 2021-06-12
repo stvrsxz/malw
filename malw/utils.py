@@ -1,6 +1,8 @@
 from enum import Enum
 from pathlib import Path
+from typing import List
 
+import ssdeep
 import typer
 
 
@@ -53,3 +55,21 @@ def accept_file_size(path: Path, prompt_message_part: str = "", bytes_to_prompt:
             f"File is bigger than {get_human_readable_size(bytes_to_prompt)}. {prompt_message_part}")
 
     return accept
+
+
+def unpack_paths(paths: List[Path]):
+    """Get a list of paths. Whatever there are. Directories, files and
+    return a set of distinct filepaths
+    """
+    filepaths = set()
+    for path in paths:
+        filepaths.update(set(get_filepaths(path)))
+    return filepaths
+
+
+def get_fuzzy_hash(filepath: Path):
+    return ssdeep.hash_from_file(str(filepath))
+
+
+def get_path_from_parent(path: Path):
+    return str(path.relative_to(path.parent.parent))
