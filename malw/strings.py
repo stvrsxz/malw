@@ -47,7 +47,7 @@ class InterestingString(StringType):
     @classmethod
     def is_matching(cls, value: str):
         for interesting in cls.interesting_strings:
-            if interesting in value:
+            if interesting in value.lower():
                 return True
 
     type_ = "interesing"
