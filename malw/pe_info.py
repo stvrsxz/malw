@@ -87,13 +87,13 @@ class PEInfo:
     @property
     def exports(self):  # TODO: testing for exports
         if hasattr(self.pe, 'DIRECTORY_ENTRY_EXPORT'):
-            return [export.name for export in self.pe.DIRECTORY_ENTRY_EXPORT.symbols]  # pylint: disable=no-member
+            return [export.name.decode("utf8") for export in self.pe.DIRECTORY_ENTRY_EXPORT.symbols]  # pylint: disable=no-member
         return []
 
     def print_exports(self):
         exports_string = "\n".join(self.exports)
         typer.echo(
-            f"\nExports:\n {typer.style(exports_string, fg=typer.colors.CYAN)}")
+            f"\nExports:\n{typer.style(exports_string, fg=typer.colors.CYAN)}")
 
     @property
     def built_with(self):
