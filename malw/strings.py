@@ -130,7 +130,7 @@ class EmailString(StringType):
 
 class MD5HashString(StringType):
     # https://stackoverflow.com/questions/21517102/regex-to-match-md5-hashes
-    regex = "^[a-fA-F0-9]{32}"
+    regex = "^[a-fA-F0-9]{32}$"
     type_ = "md5"
     hint = "MD5 Hash?"
     example = "0f53217fc7c8e7f89e8a8558e64a7083"
